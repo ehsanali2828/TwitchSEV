@@ -37,12 +37,12 @@ To get all the data i have use the following commands:
 
 6:  Inside the routes folder there is web.php file which contains the application routes.
 
-# How I deploy the above code on AWS?
+# How to deploy the above code on AWS?
 Scaling application is always a bit tricky, but We use the Amazon Web Services EC2, which is elastic cloud too, so this allows alot of flexibility and handling any amount of traffic. well, first i will login to AWS management console and then click on EC2 link and click on launch instance button and then one wizerd will be open where we select that what we are going to deploy, just like Ubuntu 6 bit server etc and then continue and on one window i will give my instance a key and value which just indication for application and i next i need key pair that server realize that my machine by SSH, and i create and download and put on my desktop and now i need to create security group which allows us to SSH into server or via mysql etc. This is just a normal form to fill in. Then i continue and launch server so shortly i have virtual server to be use for my application. When i see green running state its mean ready to work. 
 Then i have to open bash shell or any shell, and then give command SSH -i [keyvalue file name here] ubuntu link of amazon and then yes to authenticate. If we have already setup permissions then it will work fine or need to do permissions as well.
 Now i have to install apache as well which could be done by sudo apt-get install apache2 In this way i will install PHP, any its extention, MySql (sudo apt-get install mysql-server) and even laravel application, composer etc all. Then using SSH we can connect to web server and further we can do modifications. This is the way to install and work with laravel. 
 
-# Where do you see bottlenecks in your proposed architecture and how would you approach scaling this app starting from 100 reqs/day to 900MM reqs/day over 6 months?
+# How to scale Application on millions of requests
 
 Well my proposed architecture is very simple and perfect for extendability of application, I believe that Scaling to Billions of Requests a Day or even after 6 month could be possible using AWS. There are couple of things which help us in scalling our application to prevent from any kind of bottelnecks, just like Amazon Classic load balancer and Amazon Auto Scaling Groups will definately a perfect solution. There are three type of load balancers in Elastic Load Balancing: Application, Network and Classic Load Balancers. All will are essential for better scalling and performance. Here i am explaning what services could help us for scaling application:
 
@@ -52,6 +52,3 @@ Amazon Auto Scaling Groups - This helps in scaling for NGINX Plus load balancer 
 Amazon Classic Load Balancers - This will be use 
 Amazon Route 53 - Basically this provides cross region Global DNS load balancing and then finally which is in my mind is
 Amazon VPC - This provides private segregated networks in each AZ.
-
-
-Note: I did my best to explain step by step as i did with many other projects so its best and reliable way to do and i believe all applications are hosted in the same way :) If there is something more to discuss or require then kindly let me know.
